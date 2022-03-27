@@ -2,10 +2,36 @@ package main
 
 import "fmt"
 
-func Ola(nome string) string {
-	return "Olá, " + nome
+const spanish = "Spanish"
+const french = "French"
+const portuguese = "Portuguese"
+const englishHelloPrefix = "Hello, "
+const spanishHelloPrefix = "Hola, "
+const frenchHelloPrefix = "Bonjour, "
+const portugueseHelloPrefix = "Olá, "
+
+func Hello(name string, language string) string {
+	if name == "" {
+		name = "World"
+	}
+
+	return GreetingPrefix(language) + name
+}
+
+func GreetingPrefix(language string) (prefix string) {
+	switch language {
+	case spanish:
+		prefix = spanishHelloPrefix
+	case french:
+		prefix = frenchHelloPrefix
+	case portuguese:
+		prefix = portugueseHelloPrefix
+	default:
+		prefix = englishHelloPrefix
+	}
+	return
 }
 
 func main() {
-	fmt.Println(Ola("mundo"))
+	fmt.Println(Hello("world", ""))
 }
